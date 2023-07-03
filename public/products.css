@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #1B4965;
+    color: white;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  form {
+    margin-bottom: 20px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="password"],
+  button {
+    padding: 8px;
+    margin-right: 10px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+  }
+
+  .buttona {
+    background-color: #0070ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .buttona:hover {
+    opacity: 0.7;
+  }
+  .buttonOdjava {
+    display: flex;
+    margin-top: 45px;
+    background: #0070ff;
+    margin-bottom: 31px;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .buttonOdjava:hover {
+    opacity: 0.7;
+  }
+
+  .add-quantity-form {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .add-quantity-input {
+    margin-right: 10px;
+  }
+  nav {
+    background-color: #0070ff;
+  padding: 10px;
+  width: 422px;
+  border-radius: 7px;
+  margin-bottom: 14px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+li {
+  display: inline;
+  margin-right: 10px;
+}
+
+li a {
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+  transition: 0.2s;
+}
+
+li a:hover {
+  background-color: #0050b3;
+}

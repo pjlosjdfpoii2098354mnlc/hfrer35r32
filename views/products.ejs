@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lager Lista</title>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">   -->
+  <link rel="stylesheet" href="products.css">
+</head>
+<body>
+  <h1>Lager Lista</h1>
+  <nav>
+    <ul>
+      <li><a href="/logout">Odjava</a></li>
+      <li><a href="/products">Lager lista</a></li>
+      <li><a href="/inventory">Stanje artikala</a></li>
+    </ul>
+  </nav>
+
+  <form method="POST" action="/products">
+    <input type="text" name="name" placeholder="Naziv artikla" required>
+    <input type="number" name="quantity" placeholder="Kolicina" required>
+    <button class="buttona" type="submit">Dodaj artikal</button>
+  </form>
+
+  <table>
+    <tr>
+      <th>Artikal</th>
+      <th>Kolicina</th>
+      <th>Akcija</th>
+    </tr>
+    <% products.forEach(function(product) { %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.quantity %></td>
+        <td>
+          <form class="add-quantity-form" method="POST" action="/add-quantity">
+            <input type="hidden" name="productId" value="<%= product.id %>">
+            <input class="add-quantity-input" type="number" name="quantity" placeholder="Dodaj kolicinu" required>
+            <input type="password" name="password" placeholder="Sifra" required>
+            <button class="buttona" type="submit">Dodaj</button>
+          </form>
+          <form class="trebovanje-form" method="POST" action="/trebovanje">
+            <input type="hidden" name="productId" value="<%= product.id %>">
+            <input type="number" name="quantity" placeholder="Kolicina za trebovanje" required>
+            <!-- <input type="password" name="password" placeholder="Sifra" required> -->
+            <button class="buttona" type="submit">Trebovanje</button>
+          </form>
+        </td>
+      </tr>
+    <% }); %>
+  </table>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<% function formatDate(date) { %>
+    <% if (!date) { return 'Nije trebovano'; } %>
+    <% const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }; %>
+    <% const formattedDate = new Date(date).toLocaleDateString(undefined, options); %>
+    <% const hours = new Date(date).getHours(); %>
+    <% const minutes = new Date(date).getMinutes(); %>
+    <% const currentTime = new Date(); %>
+    <% const diffMinutes = Math.floor((currentTime - new Date(date)) / 60000); %>
+    <% return formattedDate + ' (' + hours + 'h ' + minutes + 'min)'; %>
+  <% } %>
+  
+  
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stanje artikala</title>
+  <link rel="stylesheet" href="stanje.css">
+</head>
+<body>
+  <h1>Stanje artikala</h1>
+  <nav>
+    <ul>
+      <li><a href="/logout">Odjava</a></li>
+      <li><a href="/products">Lager lista</a></li>
+      <li><a href="/inventory">Stanje artikala</a></li>
+    </ul>
+  </nav>
+  <table>
+    <thead>
+      <tr>
+        <th>Artikal</th>
+        <th>Stanje</th>
+        <th>Trebovano</th>
+        <th>Datum zadnjeg trebovanja</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% inventory.forEach(function(item) { %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= item.quantity %></td>
+          <td><%= item.request_quantity %></td>
+          <td><%= formatDate(item.last_request_date) %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="4">Stanje svega: <%= totalQuantity %> | Trebovano: <%= totalReqQuantity %></th>
+        <!-- <th colspan="4">Trebovano: <%= totalReqQuantity %></th> -->
+      </tr>
+    </tfoot>    
+  </table>
+</body>
+</html>
